@@ -36,9 +36,16 @@ namespace ControleBanco
             Console.WriteLine(cb);
             Console.WriteLine();
 
-            Console.Write("Entre um valor de saque: ");
-            valor = double.Parse(Console.ReadLine());
-            cb.Saque(valor);
+            Console.Write("Deseja realizar um saque (S/N) ?");
+            char per = char.Parse(Console.ReadLine());
+
+            if ( per == 'S' || per == 's' )
+            {
+                Console.WriteLine();
+                Console.Write("Entre um valor de saque: ");
+                valor = double.Parse(Console.ReadLine());
+                cb.Saque(valor);
+            }
 
             Console.WriteLine(cb);
             Console.WriteLine();

@@ -7,3 +7,11 @@ C:\curso_api_netcore\src\Api.Domain\obj\Debug\netcoreapp2.2\Domain.AssemblyInfo.
 C:\curso_api_netcore\src\Api.Domain\obj\Debug\netcoreapp2.2\Domain.dll
 C:\curso_api_netcore\src\Api.Domain\obj\Debug\netcoreapp2.2\Domain.pdb
 C:\curso_api_netcore\src\Api.Domain\obj\Debug\netcoreapp2.2\Domain.csproj.CoreCompileInputs.cache
+C:\AppVS\VS2019\curso_api_netcore\src\Api.Domain\bin\Debug\netcoreapp2.2\Domain.deps.json
+C:\AppVS\VS2019\curso_api_netcore\src\Api.Domain\bin\Debug\netcoreapp2.2\Domain.dll
+C:\AppVS\VS2019\curso_api_netcore\src\Api.Domain\bin\Debug\netcoreapp2.2\Domain.pdb
+C:\AppVS\VS2019\curso_api_netcore\src\Api.Domain\obj\Debug\netcoreapp2.2\Domain.csprojAssemblyReference.cache
+C:\AppVS\VS2019\curso_api_netcore\src\Api.Domain\obj\Debug\netcoreapp2.2\Domain.AssemblyInfoInputs.cache
+C:\AppVS\VS2019\curso_api_netcore\src\Api.Domain\obj\Debug\netcoreapp2.2\Domain.AssemblyInfo.cs
+C:\AppVS\VS2019\curso_api_netcore\src\Api.Domain\obj\Debug\netcoreapp2.2\Domain.dll
+C:\AppVS\VS2019\curso_api_netcore\src\Api.Domain\obj\Debug\netcoreapp2.2\Domain.pdb

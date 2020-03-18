@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\curso_api_netcore\\src\\Api.Data\\Data.csproj": {}
+    "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\curso_api_netcore\\src\\Api.Data\\Data.csproj": {
+    "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\curso_api_netcore\\src\\Api.Data\\Data.csproj",
+        "projectUniqueName": "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\curso_api_netcore\\src\\Api.Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\rogerio\\.nuget\\packages\\",
-        "outputPath": "C:\\curso_api_netcore\\src\\Api.Data\\obj\\",
+        "projectPath": "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\roger\\.nuget\\packages\\",
+        "outputPath": "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\rogerio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\roger\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,14 +25,13 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://172.16.4.191:8001/api/odata": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\curso_api_netcore\\src\\Api.Domain\\Domain.csproj": {
-                "projectPath": "C:\\curso_api_netcore\\src\\Api.Domain\\Domain.csproj"
+              "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Domain\\Domain.csproj": {
+                "projectPath": "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Domain\\Domain.csproj"
               }
             }
           }
@@ -81,20 +80,20 @@
         }
       }
     },
-    "C:\\curso_api_netcore\\src\\Api.Domain\\Domain.csproj": {
+    "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\curso_api_netcore\\src\\Api.Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\curso_api_netcore\\src\\Api.Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\rogerio\\.nuget\\packages\\",
-        "outputPath": "C:\\curso_api_netcore\\src\\Api.Domain\\obj\\",
+        "projectPath": "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\roger\\.nuget\\packages\\",
+        "outputPath": "C:\\AppVS\\VS2019\\curso_api_netcore\\src\\Api.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\rogerio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\roger\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -102,7 +101,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "http://172.16.4.191:8001/api/odata": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

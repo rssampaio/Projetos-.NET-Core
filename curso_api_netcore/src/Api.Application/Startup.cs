@@ -36,8 +36,7 @@ namespace Application
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureRepository.ConfigureDependenciesRepository(services);
 
-            var config = new AutoMapper.MapperConfiguration(cfg =>
-            {
+            var config = new AutoMapper.MapperConfiguration(cfg => {
                 cfg.AddProfile(new DtoToModelProfile());
                 cfg.AddProfile(new EntiryToDtoProfile());
                 cfg.AddProfile(new ModelToEntityProfile());
@@ -55,7 +54,7 @@ namespace Application
                 .Configure(tokenConfigurations);
             services.AddSingleton(tokenConfigurations);
 
-            services.AddAuthentication(authOptions =>
+            services.AddAuthentication(authOptions => 
             {
                 authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -80,16 +79,14 @@ namespace Application
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1",
-                    new OpenApiInfo
-                    {
-                        Title = "Cusro de ASP .NET Core - API",
+                c.SwaggerDoc("v1", 
+                    new OpenApiInfo { 
+                        Title = "Cusro de ASP .NET Core - API", 
                         Version = "v1",
                         Description = "Exemplo de API REST",
-                        Contact = new OpenApiContact
-                        {
+                        Contact = new OpenApiContact {
                             Name = "Rogério Silva Sampaio"
-                        }
+                        } 
                     });
                 // c.AddSecurityDefinition("Bearer", new ApiKeyScheme(){
                 //     In = "header", 
@@ -117,15 +114,14 @@ namespace Application
 
             // Ativando o Midleware para o Swagger
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
+            app.UseSwaggerUI (c => {
                 c.RoutePrefix = string.Empty;
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Curso de API com ASP .NET Core 2.2");
+                c.SwaggerEndpoint ("/swagger/v1/swagger.json","Curso de API com ASP .NET Core 2.2");
             });
 
             // Redireciona o link para o Swagger, quando acessar a rota principal
-            var option = new RewriteOptions();
-            option.AddRedirect("^$", "swagger");
+            var option = new RewriteOptions ();
+            option.AddRedirect("^$","swagger");
             app.UseRewriter(option);
 
             app.UseMvc();

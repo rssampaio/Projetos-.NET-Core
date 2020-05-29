@@ -1,15 +1,11 @@
 ﻿using MetodosAbstratos.Entities.Enums;
+using MetodosAbstratos.Services;
 
 namespace MetodosAbstratos.Entities
 {
-    abstract class Shape
+    abstract class AbstractShape : IShape
     {
         public Color Color { get; set; }
-
-        public Shape(Color color)
-        {
-            Color = color;
-        }
 
         public abstract double Area();
     }

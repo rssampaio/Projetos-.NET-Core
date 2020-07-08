@@ -1,0 +1,50 @@
+﻿@model VendasWebMVC.Models.Seller
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalhamento</h2>
+
+<div>
+    <h4>Vendedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            @Html.DisplayName("Nome")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayName("E-mail")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayName("Aniversário")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+        <dt>
+            @Html.DisplayName("Salário")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BaseSalary)
+        </dd>
+        <dt>
+            @Html.DisplayName("Departamento")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+    </dl>
+
+</div>
+
+<div>
+    <input type="button" value="Editar" class="btn btn-success" onclick="window.location.href='/Sellers/Index'" />
+    <input type="button" value="Retornar" class="btn btn-default" onclick="window.location.href='/Sellers/Index'" />
+</div>

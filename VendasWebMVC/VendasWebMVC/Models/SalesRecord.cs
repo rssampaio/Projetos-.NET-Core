@@ -1,5 +1,6 @@
 ﻿using System;
 using VendasWebMVC.Models.Enums;
+
 namespace VendasWebMVC.Models
 {
     public class SalesRecord

@@ -18,7 +18,7 @@ namespace VendasWebMVC.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> SimpleSearch(DateTime? minDate, DateTime? maxDate)
+        public async Task<IActionResult> SimpleSearch(DateTime? minDate, DateTime? maxDate, Boolean? agrupar)
         {
 
             if (!minDate.HasValue)
@@ -29,13 +29,31 @@ namespace VendasWebMVC.Controllers
             {
                 maxDate = DateTime.Now;
             }
+            if (!agrupar.HasValue)
+            {
+                agrupar = false;
+            }
+            else
+            {
+                agrupar = true;
+            }
 
             ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
             ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
 
-            var result = await _salesRecordService.FindByDateAsync(minDate, maxDate);
+            if (agrupar == true)
+            {
+                var result = await _salesRecordService.FindByDateGroupingAsync(minDate, maxDate);
+                return View("GroupingSearch", result);
+            }
+            else
+            {
+                var result = await _salesRecordService.FindByDateAsync(minDate, maxDate);
+                return View("SimpleSearch", result);
+            }
+            
 
-            return View(result);
+            //return View(result);
         }
         public async Task<IActionResult> GroupingSearch(DateTime? minDate, DateTime? maxDate)
         {

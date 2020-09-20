@@ -1,24 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Chacrutaria.Interfaces;
+using Chacrutaria.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Chacrutaria.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IProdutoRepository _produtoRepository;
 
+        public HomeController(IProdutoRepository produtoRepository)
+        {
+            _produtoRepository = produtoRepository;
+        }
         public IActionResult Index()
         {
-            return View();
-        }
+            var homeViewModel = new HomeViewModel
+            {
+                ProdutosPreferidos = _produtoRepository.ProdutoPreferido
+            };
 
-        public IActionResult Privacy()
-        {
-            return View();
+            return View(homeViewModel);
         }
 
     }

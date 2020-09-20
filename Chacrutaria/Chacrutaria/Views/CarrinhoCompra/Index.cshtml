@@ -1,0 +1,52 @@
+﻿
+@model CarrinhoCompraViewModel
+
+<div class="row form-check">
+
+    <h2>Carrinho de Compra</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Quantidade</th>
+                <th>Item</th>
+                <th class="text-right">Preço</th>
+                <th class="text-right">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.CarrinhoCompra.CarrinhoCompraItems)
+            {
+            <tr>
+                <td>@item.QtdeItens</td>
+                <td>@item.Produto.Nome</td>
+                <td class="text-right">@item.Produto.Preco.ToString("c")</td>
+                <td class="text-right">@((item.QtdeItens * item.Produto.Preco).ToString("c"))</td>
+
+                <td class="text-center">
+                    <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" asp-route-lancheId="@item.Produto.ProdutoId"><img src="~/images/delete.png" /></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+        <tfoot>
+            <td colspan="3" class="text-right">Total:</td>
+            <td class="text-right">@Model.TotalCarrinho.ToString("c")</td>
+        </tfoot>
+    </table>
+
+    <div class="text-right">
+        <div class="btn-group">
+            <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Finalizar Pedido</a>
+            @*<a class="btn-group"´>
+                <a class="btn btn-sm dropdown-toggle" data-toggle="dropdown">
+                    Adcionar mais itens<span class="card"></span>
+                </a>
+                <ul></ul>
+            </a>*@
+        </div>
+
+    </div>
+
+</div>
+

@@ -36,6 +36,10 @@ namespace Chacrutaria
             services.AddScoped(cp => CarrinhoService.GetCarrinho(cp));
 
             services.AddControllersWithViews();
+
+            //configura o uso da Sessão
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

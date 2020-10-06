@@ -7,9 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Chacrutaria.Context;
 using Chacrutaria.Repositories;
-using Chacrutaria.Interfaces;
+using Chacrutaria.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
-using Chacrutaria.Services;
+using Microsoft.AspNetCore.Identity;
+using Chacrutaria.Models;
 
 namespace Chacrutaria
 {
@@ -29,11 +30,21 @@ namespace Chacrutaria
             services.AddDbContext<AppDbContext>(options =>
                 options.UseMySql(connection));
 
-            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
-            services.AddTransient<IProdutoRepository, ProdutoRepository>();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddScoped(cp => CarrinhoService.GetCarrinho(cp));
+            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
+            services.AddTransient<IClienteRepository, ClienteRepository>();
+
+            //cria um objeto Scoped, ou seja um objeto que esta associado a requisição
+            //isso significa que se duas pessoas solicitarem o objeto CarrinhoCompra ao  mesmo tempo
+            //elas vão obter instâncias diferentes
+            services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
             services.AddControllersWithViews();
 
@@ -58,6 +69,7 @@ namespace Chacrutaria
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseAuthentication();
 
             app.UseRouting();
 
@@ -65,6 +77,15 @@ namespace Chacrutaria
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute(
+                //    name: "AdminArea",
+                //    pattern: "{area=exists}/{controller=Admin}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "filtroCategoria",
+                    pattern: "Produto/{action}/{categoria}",
+                    defaults: new {Controller="Produto", action= "ListaProduto" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,4 +1,4 @@
-﻿using Chacrutaria.Interfaces;
+﻿using Chacrutaria.Repositories.Interfaces;
 using Chacrutaria.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Chacrutaria.Context;
-using Chacrutaria.Models;
 using System.Collections.Generic;
 
 namespace Chacrutaria.Models

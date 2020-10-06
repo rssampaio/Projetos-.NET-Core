@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @*<title>@ViewData["Title"] - Grande Chacrutaria</title>*@
     <title>Grande Chacrutaria</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
@@ -11,26 +10,30 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3">
-            <div class="container text-md-right text-sm-right text-md-right">
+            <div class="container">
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <div class="navbar-collapse collapse d-sm-inline-flex">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                    @await Component.InvokeAsync("CategoriaMenu")
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Sobre" asp-action="Index">Sobre</a>
                     @await Component.InvokeAsync("CarrinhoCompraResumo")
-                    <ul class="navbar-nav flex-grow-1">
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Inicio" asp-action="Index">Sobre</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
-                        </li>
-                    </ul>
-
+                    
+                </div>
+                <form class="navbar-form navbar-right" asp-controller="Produto" asp-action="Search" method="get">
+                    <div class="form-group" style="margin-top:15px">
+                        <input type="text" class="form-control" placeholder="Buscar produto" name="searchString" value="@ViewData["searchString"]">
+                    </div>
+                </form>
+                @*<div style="margin-top:15px">
+                    @await Component.InvokeAsync("CarrinhoCompraResumo")
+                </div>*@
+                <div>
+                    @await Html.PartialAsync("_LoginPartial")
                 </div>
             </div>
         </nav>
@@ -41,11 +44,6 @@
         </main>
     </div>
 
-    @*<footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Chacrutaria Grande - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using Chacrutaria.ViewModels;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Chacrutaria.Controllers
 {
-    public class InicioController : Controller
+    public class SobreController : Controller
     {
         public IActionResult Index()
         {

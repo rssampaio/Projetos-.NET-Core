@@ -1,23 +1,23 @@
 ﻿@model Produto
 
-<head>
-    
-</head>
+<div class="col-sm-3 col-lg-3 col-md-3 col-xl-3">
 
-<body>
-    <div class="col-sm-3 col-lg-3 col-md-3 col-xl-3">
-
-        <div class="img-thumbnail">
-            <img src="@Model.ImagemUrl" class="img-rounded" alt="" width="200" height="200" />
-        </div>
-
-        <div class="figure-caption">
-            <h4 class="text-right"> @Model.Preco.ToString("c")</h4>
-            <h5>
-                @Model.Nome
-            </h5>
-            <p style="font: bold 16px times new roman">@Model.Descricao</p>
-        </div>
-
+    <div class="img-thumbnail">
+        <img src="@Model.ImagemUrl" class="img-rounded" alt="" width="200" height="200" />
     </div>
-</body>
+
+    <div class="figure-caption">
+        <h4 class="text-right"> @Model.Preco.ToString("c")</h4>
+        <h5>
+            <a asp-controller="Produto" asp-action="Details" asp-route-produtoId="@Model.ProdutoId">@Model.Nome</a>
+        </h5>
+        <p style="font: bold 16px times new roman">@Model.Descricao</p>
+    </div>
+    <div text-right">
+        <p class="formPullRightButton">
+            <a class="btn btn-primary" asp-controller="CarrinhoCompra" asp-action="AdicionarItemCarrinhoCompra" asp-route-produtoId="@Model.ProdutoId">
+                Adicionar à cesta
+            </a>
+        </p>
+    </div>
+</div>

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Chacrutaria.Models;
 using Chacrutaria.ViewModels;
-using System.Collections.Generic;
 
 namespace Chacrutaria.Components
 {

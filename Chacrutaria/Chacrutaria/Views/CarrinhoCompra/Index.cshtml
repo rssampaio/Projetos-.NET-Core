@@ -8,8 +8,8 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Quantidade</th>
                 <th>Item</th>
+                <th>Quantidade</th>
                 <th class="text-right">Preço</th>
                 <th class="text-right">Subtotal</th>
             </tr>
@@ -18,13 +18,16 @@
             @foreach(var item in Model.CarrinhoCompra.CarrinhoCompraItems)
             {
             <tr>
-                <td>@item.QtdeItens</td>
                 <td>@item.Produto.Nome</td>
+                <td>@item.QtdeItens</td>
                 <td class="text-right">@item.Produto.Preco.ToString("c")</td>
                 <td class="text-right">@((item.QtdeItens * item.Produto.Preco).ToString("c"))</td>
 
                 <td class="text-center">
-                    <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" asp-route-lancheId="@item.Produto.ProdutoId"><img src="~/images/delete.png" /></a>
+                    <a asp-controller="CarrinhoCompra" asp-action="RemoverItemCarrinhoCompra" asp-route-produtoId="@item.Produto.ProdutoId"><img src="~/images/delete.png" /></a>
+                </td>
+                <td>
+                    <a asp-controller="CarrinhoCompra" asp-action="AdicionarItemCarrinhoCompra" asp-route-produtoId="@item.Produto.ProdutoId"><img src="~/images/icon-add-basket.png" /></a>
                 </td>
             </tr>
             }
@@ -38,12 +41,7 @@
     <div class="text-right">
         <div class="btn-group">
             <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Finalizar Pedido</a>
-            @*<a class="btn-group"´>
-                <a class="btn btn-sm dropdown-toggle" data-toggle="dropdown">
-                    Adcionar mais itens<span class="card"></span>
-                </a>
-                <ul></ul>
-            </a>*@
+            <a class="btn btn-danger" asp-controller="CarrinhoCompra" asp-action="RetornarInicio">Retornar</a>
         </div>
 
     </div>

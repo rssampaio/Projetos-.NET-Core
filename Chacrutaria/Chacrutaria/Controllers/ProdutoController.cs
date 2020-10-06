@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Chacrutaria.Interfaces;
+using Chacrutaria.Repositories.Interfaces;
 using Chacrutaria.ViewModels;
+using System.Collections.Generic;
+using Chacrutaria.Models;
+using System.Linq;
+using System;
 
 namespace Chacrutaria.Controllers
 {
@@ -15,18 +19,61 @@ namespace Chacrutaria.Controllers
             _categoriaRepository = categoriaRepository;
         }
 
-        public IActionResult ListaProduto()
+        public IActionResult ListaProduto(string categoria)
         {
-            // Utiliza o Modelo para enviar os dados para a view
-            //var produtos = _produtoRepository.Produtos;
-            //return View(produtos);
+            string _categoria = categoria;
+            IEnumerable<Produto> produtos;
+            string categoriaAtual = string.Empty;
 
-            // Será utilizada a View Model para envio do modelo
-            var ProdutoListViewModel = new ProdutoListViewModel();
-            ProdutoListViewModel.Produtos = _produtoRepository.Produtos;
-            ProdutoListViewModel.CategoriaAtual = "Categoria Atual";
+            if (string.IsNullOrEmpty(categoria))
+            {
+                produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId);
+                categoria = "Todos os Itens";
+            }
+            else
+            {
 
-            return View(ProdutoListViewModel);
+                produtos = _produtoRepository.Produtos.Where(p =>
+                           p.Categoria.NomeCategoria.Equals(_categoria, StringComparison.OrdinalIgnoreCase)).OrderBy(p => p.Nome);
+
+                categoriaAtual = _categoria;
+            }
+
+            var produtosListViweModel = new ProdutoListViewModel
+            {
+                Produtos = produtos,
+                CategoriaAtual = categoriaAtual.ToUpper()
+            };
+
+            return View(produtosListViweModel);
+        }
+        public IActionResult Details(int produtoId)
+        {
+            var produto = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+
+            if (produto is null)
+            {
+                return View("~/Views/Error/Error.cshtml");
+            }
+
+            return View(produto);
+        }
+
+        public IActionResult Search(string searchstring)
+        {
+            string _searchstring = searchstring;
+            IEnumerable<Produto> produtos;
+
+            if (string.IsNullOrEmpty(_searchstring))
+            {
+                produtos = _produtoRepository.Produtos.OrderBy(p => p.Nome);
+            }
+            else
+            {
+                produtos = _produtoRepository.Produtos.Where(p => p.Nome.ToLower().Contains(_searchstring.ToLower()));
+            }
+
+            return View("ListaProduto", new ProdutoListViewModel { Produtos = produtos, CategoriaAtual = ""});
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Chacrutaria.Context;
 using Chacrutaria.Models;
-using Chacrutaria.Interfaces;
+using Chacrutaria.Repositories.Interfaces;
 
 namespace Chacrutaria.Repositories
 {

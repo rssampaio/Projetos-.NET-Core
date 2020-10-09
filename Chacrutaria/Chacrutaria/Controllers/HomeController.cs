@@ -14,12 +14,23 @@ namespace Chacrutaria.Controllers
         }
         public IActionResult Index()
         {
+            
+            return View();
+        }
+
+        public IActionResult Loja()
+        {
             var homeViewModel = new HomeViewModel
             {
                 ProdutosPreferidos = _produtoRepository.ProdutoPreferido
             };
 
             return View(homeViewModel);
+        }
+
+        public ViewResult AccessDenied()
+        {
+            return View();
         }
 
     }

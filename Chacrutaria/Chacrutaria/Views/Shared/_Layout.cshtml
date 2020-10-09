@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
             <div class="container">
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -17,21 +17,22 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Loja" style="color:gold">Chacrutaria</a>
                     @await Component.InvokeAsync("CategoriaMenu")
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Sobre" asp-action="Index">Sobre</a>
+                    <a class="nav-link" asp-area="" asp-controller="Contato" asp-action="Index" style="color:gold">Contato</a>
+                    @*<a class="nav-link" asp-area="" asp-controller="Sobre" asp-action="Index" style="color:gold">Sobre</a>*@
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index" style="color:gold">Administrador</a>
+                    }
                     @await Component.InvokeAsync("CarrinhoCompraResumo")
-                    
+
                 </div>
                 <form class="navbar-form navbar-right" asp-controller="Produto" asp-action="Search" method="get">
                     <div class="form-group" style="margin-top:15px">
                         <input type="text" class="form-control" placeholder="Buscar produto" name="searchString" value="@ViewData["searchString"]">
                     </div>
                 </form>
-                @*<div style="margin-top:15px">
-                    @await Component.InvokeAsync("CarrinhoCompraResumo")
-                </div>*@
                 <div>
                     @await Html.PartialAsync("_LoginPartial")
                 </div>

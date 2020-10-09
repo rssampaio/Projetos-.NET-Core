@@ -7,17 +7,23 @@ namespace Chacrutaria.Models
 {
     public class Pedido
     {
-        [BindNever]
-        public int PedidoId { get; set; }
+         public int PedidoId { get; set; }
 
-        [BindNever]
         [ScaffoldColumn(false)]
         public decimal PedidoTotal { get; set; }
-
-        [BindNever]
-        [ScaffoldColumn(false)]
-        public DateTime DataHoraPedido { get; set; }
         public List<PedidoItem> PedidoItens { get; set; }
         public int ClienteId { get; set; }
+
+        [Display(Name = "Data/Hora de Recebimento do Pedido")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        public DateTime DataHoraPedido { get; set; }
+
+        [Display(Name = "Data/Hora da Entrega do Pedido")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        public DateTime? DtaPedidoEntregueEm { get; set; }
+
+
     }
 }

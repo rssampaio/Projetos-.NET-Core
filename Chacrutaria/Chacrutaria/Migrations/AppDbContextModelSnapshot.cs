@@ -126,6 +126,9 @@ namespace Chacrutaria.Migrations
                     b.Property<DateTime>("DataHoraPedido")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime?>("DtaPedidoEntregueEm")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<decimal>("PedidoTotal")
                         .HasColumnType("decimal(65,30)");
 

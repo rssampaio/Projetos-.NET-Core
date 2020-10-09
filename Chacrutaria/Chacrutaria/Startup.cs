@@ -77,9 +77,10 @@ namespace Chacrutaria
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute(
-                //    name: "AdminArea",
-                //    pattern: "{area=exists}/{controller=Admin}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "AdminArea",
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
 
                 endpoints.MapControllerRoute(
                     name: "filtroCategoria",

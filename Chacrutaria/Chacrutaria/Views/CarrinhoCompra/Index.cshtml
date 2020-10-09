@@ -3,14 +3,14 @@
 
 <div class="row form-check">
 
-    <h2>Carrinho de Compra</h2>
+    <h2 class="text-center">Cesta de Compras</h2>
 
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th>Item</th>
-                <th>Quantidade</th>
-                <th class="text-right">Preço</th>
+                <th width="500px">Item</th>
+                <th width="50px">Quantidade</th>
+                <th class="text-right" width="150px">Preço</th>
                 <th class="text-right">Subtotal</th>
             </tr>
         </thead>
@@ -19,14 +19,14 @@
             {
             <tr>
                 <td>@item.Produto.Nome</td>
-                <td>@item.QtdeItens</td>
+                <td class="text-center">@item.QtdeItens</td>
                 <td class="text-right">@item.Produto.Preco.ToString("c")</td>
                 <td class="text-right">@((item.QtdeItens * item.Produto.Preco).ToString("c"))</td>
 
-                <td class="text-center">
+                <td class="text-center" width="40px">
                     <a asp-controller="CarrinhoCompra" asp-action="RemoverItemCarrinhoCompra" asp-route-produtoId="@item.Produto.ProdutoId"><img src="~/images/delete.png" /></a>
                 </td>
-                <td>
+                <td class="text-center" width="40px">
                     <a asp-controller="CarrinhoCompra" asp-action="AdicionarItemCarrinhoCompra" asp-route-produtoId="@item.Produto.ProdutoId"><img src="~/images/icon-add-basket.png" /></a>
                 </td>
             </tr>
@@ -38,10 +38,10 @@
         </tfoot>
     </table>
 
-    <div class="text-right">
+    <div class="text-left">
         <div class="btn-group">
-            <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Finalizar Pedido</a>
-            <a class="btn btn-danger" asp-controller="CarrinhoCompra" asp-action="RetornarInicio">Retornar</a>
+            <a class="btn btn-success" asp-controller="CarrinhoCompra" asp-action="RetornarInicio">Voltar a comprar</a>
+            <a class="btn btn-danger" asp-controller="Pedido" asp-action="Checkout">Finalizar Pedido</a>
         </div>
 
     </div>

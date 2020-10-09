@@ -62,7 +62,7 @@ namespace Chacrutaria.Controllers
 
         public IActionResult RetornarInicio()
         {
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Loja", "Home");
         }
     }
 }

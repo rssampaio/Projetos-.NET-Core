@@ -1,45 +1,41 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
 <html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grande Chacrutaria</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 
-    <head>
-        <style>
-            p {
-                font: bold 54px times new roman;
-            }
-            h3 {
-                font: bold 28px times new roman;
-            }
-        </style>
-    </head>
-
-    @model HomeViewModel
-
-<body>
-
-    @*<div class="text-center">        
-        <p id="Saudacao">Grande Chacrutaria</p>
-    </div>*@
-
-    <br />
-
-    @await Html.PartialAsync("_Carousel")
-
-    <br />
-    <br />
-
-    <div>
-        <h3>Produtos em Promoção</h3>
-    </div>
-
-    <br />
-
-    <div class="row">
-        @foreach (var produto in Model.ProdutosPreferidos)
-        {
-            <partial name="_ProdutosResumo" for="@produto" />
+    <style>
+        body {
+            background-color: black;
         }
+
+        img {
+            margin-left: 400px;
+        }
+        h3 {
+            margin-left: 580px;
+        }
+    </style>
+
+</head>
+<body>
+    <br />
+    <h3 style="color:gold">Bem Vindo !!!</h3>
+ 
+    <div class="img-fluid figure-img">
+        <img src="~/images/Grande_Chacrutaria.jpg" class="d-block" alt="Apresentacao" width="500" height="500">
     </div>
-
+    <div class="btn-group" style="margin-left: 600px">
+        <a class="btn" asp-controller="Home" asp-action="Loja" style="color:gold">Ir para a Loja</a>
+    </div>
 </body>
-
 </html>

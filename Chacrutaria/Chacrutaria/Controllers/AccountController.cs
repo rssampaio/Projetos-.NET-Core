@@ -30,32 +30,24 @@ namespace Chacrutaria.Controllers
         public async Task<IActionResult> Login(LoginViewModel loginVM)
         {
             if (!ModelState.IsValid)
-            {
                 return View(loginVM);
-            }
 
-            var emailUser = await _userManager.FindByNameAsync(loginVM.UserEmail);
+            var user = await _userManager.FindByNameAsync(loginVM.UserEmail);
 
-            if (emailUser != null)
+            if (user != null)
             {
-                var validaSenha = await _signInManager.PasswordSignInAsync(emailUser, loginVM.Password, false, false);
-
-                if (validaSenha.Succeeded)
+                var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                if (result.Succeeded)
                 {
                     if (string.IsNullOrEmpty(loginVM.ReturnUrl))
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Loja", "Home");
                     }
-                    return RedirectToAction(loginVM.ReturnUrl);
-                }
-                else
-                {
-                    ModelState.AddModelError("", "E-mail / Senha inválido !");
-                    return View(loginVM);
+                    return Redirect(loginVM.ReturnUrl);
                 }
             }
 
-            ModelState.AddModelError("", "E-mail / Senha inválido !");
+            ModelState.AddModelError("", "Usuário/Senha inválidos ou não localizados!!");
             return View(loginVM);
         }
 
@@ -70,15 +62,18 @@ namespace Chacrutaria.Controllers
         {
             if (ModelState.IsValid)
             {
-                var emailUser = new IdentityUser() { UserName = registerVM.UserEmail };
-                var result = await _userManager.CreateAsync(emailUser, registerVM.Password);
+                var user = new IdentityUser() { UserName = registerVM.UserEmail };
+                var result = await _userManager.CreateAsync(user, registerVM.Password);
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    //// Adiciona o usuário padrão ao perfil Member
+                    await _userManager.AddToRoleAsync(user, "Membro");
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    return RedirectToAction("LoggedIn", "Account");
                 }
             }
-
             return View(registerVM);
         }
 
@@ -87,7 +82,7 @@ namespace Chacrutaria.Controllers
         {
             await _signInManager.SignOutAsync();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Loja", "Home");
         }
     }
 }

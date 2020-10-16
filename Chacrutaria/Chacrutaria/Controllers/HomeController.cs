@@ -33,5 +33,10 @@ namespace Chacrutaria.Controllers
             return View();
         }
 
+        public ViewResult AcessDenied()
+        {
+            return View();
+        }
+
     }
 }

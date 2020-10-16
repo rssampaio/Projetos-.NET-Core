@@ -14,6 +14,7 @@ namespace Chacrutaria.Models
         [StringLength(250)]
         public string DescDetalhada { get; set; }
 
+        [Display(Name="Preço")]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Preco { get; set; }
 

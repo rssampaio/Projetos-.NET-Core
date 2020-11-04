@@ -1,5 +1,6 @@
 ﻿using Chacrutaria.Context;
 using Chacrutaria.Models;
+using Chacrutaria.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -148,6 +149,32 @@ namespace Chacrutaria.Areas.Admin.Controllers
         private bool PedidoExists(int id)
         {
             return _context.Pedidos.Any(e => e.PedidoId == id);
+        }
+
+        public IActionResult PedidoProduto(int? id)
+        {
+            var pedido = _context.Pedidos
+                          .Include(pd => pd.PedidoItens)
+                          .ThenInclude(p => p.Produto)
+                          .FirstOrDefault(p => p.PedidoId == id);
+
+            var cliente = _context.Pedidos.Include(pd => pd.Cliente)
+                          .FirstOrDefault(c => c.ClienteId == pedido.ClienteId);
+
+            if (pedido == null)
+            {
+                Response.StatusCode = 404;
+                return View("PedidoNotFound", id.Value);
+            }
+
+            PedidoProdutosViewModel pedidoProdutos = new PedidoProdutosViewModel()
+            {
+                Pedido = pedido,
+                PedidoItens = pedido.PedidoItens,
+                Cliente = cliente.Cliente
+            };
+
+            return View(pedidoProdutos);
         }
     }
 }

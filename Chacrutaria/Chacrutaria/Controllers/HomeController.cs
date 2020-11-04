@@ -14,7 +14,7 @@ namespace Chacrutaria.Controllers
         }
         public IActionResult Index()
         {
-            
+
             return View();
         }
 
@@ -32,11 +32,5 @@ namespace Chacrutaria.Controllers
         {
             return View();
         }
-
-        public ViewResult AcessDenied()
-        {
-            return View();
-        }
-
     }
 }

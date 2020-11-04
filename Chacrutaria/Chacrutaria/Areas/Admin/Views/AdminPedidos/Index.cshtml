@@ -1,25 +1,25 @@
 ﻿@model IEnumerable<Chacrutaria.Models.Pedido>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Pedidos";
 }
 
-<h1>Index</h1>
+<h1>Pedidos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Incluir</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ClienteId)
+                @Html.DisplayName("Pedido")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataHoraPedido)
+                @Html.DisplayName("Data do Pedido")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DtaPedidoEntregueEm)
+                @Html.DisplayName("Entrga")
             </th>
             <th></th>
         </tr>
@@ -28,18 +28,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ClienteId)
+                @Html.DisplayFor(modelItem => item.PedidoId)
             </td>
-            <td>
+            <td class="text-center">
                 @Html.DisplayFor(modelItem => item.DataHoraPedido)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DtaPedidoEntregueEm)
+                @Html.DisplayNameFor(model => item.Cliente.Nome)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PedidoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PedidoId">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.PedidoId">Editar</a>
                 <a asp-action="Delete" asp-route-id="@item.PedidoId">Delete</a>
+                <a asp-action="PedidoProduto" asp-route-id="@item.PedidoId">Ver Produtos</a>
             </td>
         </tr>
 }

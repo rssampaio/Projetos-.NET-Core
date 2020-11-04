@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Chacrutaria.Models
@@ -16,6 +17,7 @@ namespace Chacrutaria.Models
         public string Sobrenome { get; set; }
         
         [StringLength(150)]
+        [Display(Name = "Endereço")]
         public string Endereco { get; set; }
         
         [StringLength(150)]
@@ -43,11 +45,10 @@ namespace Chacrutaria.Models
         public string Email { get; set; }
 
         [Display(Name = "Telefone Fixo")]
-        [DataType(DataType.PhoneNumber)]
         public int Fone1 { get; set; }
 
         [Display(Name = "Celular")]
-        [DataType(DataType.PhoneNumber)]
         public int Fone2 { get; set; }
+
     }
 }

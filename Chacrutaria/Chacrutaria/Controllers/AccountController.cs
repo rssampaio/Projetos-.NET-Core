@@ -1,6 +1,8 @@
-﻿using Chacrutaria.ViewModels;
+﻿using Chacrutaria.Models;
+using Chacrutaria.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Chacrutaria.Controllers
@@ -9,12 +11,15 @@ namespace Chacrutaria.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly CarrinhoCompra _carrinhoCompra;
 
         public AccountController(UserManager<IdentityUser> userManager,
-                                 SignInManager<IdentityUser> signInManager)
+                                 SignInManager<IdentityUser> signInManager,
+                                 CarrinhoCompra carrinhoCompra)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _carrinhoCompra = carrinhoCompra;
         }
 
         [HttpGet]
@@ -80,6 +85,15 @@ namespace Chacrutaria.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
+
+            var itens = _carrinhoCompra.GetCarrinhoCompraItems();
+            _carrinhoCompra.CarrinhoCompraItems = itens;
+
+            if (_carrinhoCompra.CarrinhoCompraItems.Count() > 0)
+            {
+                _carrinhoCompra.LimparCarrinho();
+            }
+            
             await _signInManager.SignOutAsync();
 
             return RedirectToAction("Loja", "Home");

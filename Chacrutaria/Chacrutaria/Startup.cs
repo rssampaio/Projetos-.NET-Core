@@ -34,6 +34,14 @@ namespace Chacrutaria
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 8;
+                options.Password.RequiredUniqueChars = 1;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireDigit = false;
+            });
+
             services.ConfigureApplicationCookie(option => option.AccessDeniedPath = "/Home/AcessDenied");
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

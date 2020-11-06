@@ -52,7 +52,7 @@ namespace Chacrutaria.Controllers
                 }
             }
 
-            ModelState.AddModelError("", "Usuário/Senha inválidos ou não localizados!!");
+            ModelState.AddModelError("usuario.invalido", "Usuário/Senha inválidos ou não localizados");
             return View(loginVM);
         }
 
@@ -67,18 +67,34 @@ namespace Chacrutaria.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = registerVM.UserEmail };
-                var result = await _userManager.CreateAsync(user, registerVM.Password);
+                var user = await _userManager.FindByNameAsync(registerVM.UserEmail);
 
-                if (result.Succeeded)
+                if (user == null)
                 {
-                    //// Adiciona o usuário padrão ao perfil Member
-                    await _userManager.AddToRoleAsync(user, "Membro");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    var usercad = new IdentityUser() { UserName = registerVM.UserEmail };
+                    var result = await _userManager.CreateAsync(usercad, registerVM.Password);
 
-                    return RedirectToAction("LoggedIn", "Account");
+                    if (result.Succeeded)
+                    {
+                        //// Adiciona o usuário padrão ao perfil Member
+                        await _userManager.AddToRoleAsync(usercad, "Membro");
+                        await _signInManager.SignInAsync(usercad, isPersistent: false);
+
+                        return RedirectToAction("Login", "Account");
+                    }
+
+                    ModelState.AddModelError("senha.invalido", "Senha inválida !");
+                    ModelState.AddModelError("senha1.invalido","Deverá ter o mínimo de 8 caracteres");
+                    ModelState.AddModelError("senha2.invalido","Deverá conter letras e número");
+
+                    return View(registerVM);
                 }
+
+                ModelState.AddModelError("senha.invalido", "Email já existe cadastrado");
+                return View(registerVM);
             }
+
+            ModelState.AddModelError("senha.invalido", "Email/Senha inválidos");
             return View(registerVM);
         }
 

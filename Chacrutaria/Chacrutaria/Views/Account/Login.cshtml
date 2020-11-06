@@ -6,7 +6,7 @@
         <td>
             <div class="row loginForm">
                 <div class="col-md-12">
-                    <h4>Informe as credenciais do usuário</h4>
+                    <h4>Informe Usuário e Senha para Login</h4>
                     <form asp-controller="Account" asp-action="Login" method="post" class="form-horizontal" role="form">
                         <hr />
                         <input type="hidden" asp-for="ReturnUrl" />
@@ -29,6 +29,9 @@
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" class="btn btn-success" value="Log in" />
                             </div>
+                        </div>
+                        <div class="col-md-12 text-danger">
+                            @Html.ValidationMessage("usuario.invalido")
                         </div>
                     </form>
                 </div>

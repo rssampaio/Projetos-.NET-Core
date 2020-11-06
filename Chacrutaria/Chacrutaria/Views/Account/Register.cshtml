@@ -6,7 +6,7 @@
         <td>
             <div class="row loginForm">
                 <div class="col-md-12">
-                    <h4>Registrar usuário</h4>
+                    <h4>Registrar Usuário e Senha de Login</h4>
                     <form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
                         <hr />
                         <div class="form-group">
@@ -27,6 +27,15 @@
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" class="btn btn-success " value="Registrar" />
                             </div>
+                        </div>
+                        <div class="col-md-12 text-danger">
+                            @Html.ValidationMessage("senha.invalido")
+                        </div>
+                        <div class="col-md-12 text-danger">
+                            @Html.ValidationMessage("senha1.invalido")
+                        </div>
+                        <div class="col-md-12 text-danger">
+                            @Html.ValidationMessage("senha2.invalido")
                         </div>
                     </form>
                 </div>

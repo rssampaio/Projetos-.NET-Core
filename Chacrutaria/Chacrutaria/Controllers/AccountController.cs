@@ -90,7 +90,7 @@ namespace Chacrutaria.Controllers
                     return View(registerVM);
                 }
 
-                ModelState.AddModelError("senha.invalido", "Email já existe cadastrado");
+                ModelState.AddModelError("senha.invalido", "Email já cadastrado");
                 return View(registerVM);
             }
 

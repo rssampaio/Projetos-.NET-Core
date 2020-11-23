@@ -36,7 +36,7 @@ namespace Chacrutaria.Controllers
 
             if (_carrinhoCompra.CarrinhoCompraItems.Count() == 0)
             {
-                ModelState.AddModelError("", "Sua cesta de compra está vazia !!");
+                ModelState.AddModelError("pedido.vazio", "Sua cesta de compra está vazia !!");
             }
 
             if (ModelState.IsValid)

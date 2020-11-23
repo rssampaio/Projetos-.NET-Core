@@ -59,7 +59,11 @@ namespace Chacrutaria.Models
             }
             else // Se existir o carrinho com o item, então incrementa a quantidade
             {
-                carrinhoCompraItem.QtdeItens++;
+                if (carrinhoCompraItem.QtdeItens < 99)
+                {
+                    carrinhoCompraItem.QtdeItens++;
+                }
+                
             }
 
             _context.SaveChanges();

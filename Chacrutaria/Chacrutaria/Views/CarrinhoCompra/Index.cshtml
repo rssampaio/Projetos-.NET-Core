@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th width="500px">Item</th>
-                <th width="50px">Quantidade</th>
+                <th class="text-center" width="130px">Quantidade</th>
                 <th class="text-right" width="150px">Preço</th>
                 <th class="text-right">Subtotal</th>
             </tr>
@@ -19,16 +19,13 @@
             {
             <tr>
                 <td>@item.Produto.Nome</td>
-                <td class="text-center">@item.QtdeItens</td>
+                <td class="text-center">
+                    <a class="btn btn-secondary" style="font:bold" asp-controller="CarrinhoCompra" asp-action="RemoverItemCarrinhoCompra" asp-route-produtoId="@item.Produto.ProdutoId">-</a>
+                    @item.QtdeItens
+                    <a class="btn btn-secondary" style="font:bold" asp-controller="CarrinhoCompra" asp-action="AdicionarItemCarrinhoCompra" asp-route-produtoId="@item.Produto.ProdutoId">+</a>
+                </td>
                 <td class="text-right">@item.Produto.Preco.ToString("c")</td>
                 <td class="text-right">@((item.QtdeItens * item.Produto.Preco).ToString("c"))</td>
-
-                <td class="text-center" width="40px">
-                    <a asp-controller="CarrinhoCompra" asp-action="RemoverItemCarrinhoCompra" asp-route-produtoId="@item.Produto.ProdutoId"><img src="~/images/delete.png" /></a>
-                </td>
-                <td class="text-center" width="40px">
-                    <a asp-controller="CarrinhoCompra" asp-action="AdicionarItemCarrinhoCompra" asp-route-produtoId="@item.Produto.ProdutoId"><img src="~/images/icon-add-basket.png" /></a>
-                </td>
             </tr>
             }
         </tbody>

@@ -16,7 +16,6 @@ namespace Chacrutaria.Controllers
         {
             _produtoRepository = produtoRepository;
             _carrinhoCompra = carrinhoCompra;
-
         }
 
         [Authorize]
@@ -51,6 +50,7 @@ namespace Chacrutaria.Controllers
         public RedirectToActionResult RemoverItemCarrinhoCompra(int produtoId)
         {
             var produtoSelecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+
 
             if (produtoSelecionado != null)
             {

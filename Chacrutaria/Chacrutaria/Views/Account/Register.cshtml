@@ -6,7 +6,7 @@
         <td>
             <div class="row loginForm">
                 <div class="col-md-12">
-                    <h4>Registrar Usuário e Senha de Login</h4>
+                    <h4>Registrar Usuário e Senha de Compra</h4>
                     <form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
                         <hr />
                         <div class="form-group">
@@ -24,8 +24,11 @@
                             </div>
                         </div>
                         <div class="form-group pull-right formPullRightButton">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" class="btn btn-success " value="Registrar" />
+                            <div class="col-md-2">
+                                <input type="submit" class="btn" style="Background: black; color:gold; width: 400px;" value="Registrar" />
+                            </div>
+                            <div class="col-md-">
+                                <a class="nav-link" asp-controller="Home" asp-action="Loja" style="color:blue">&nbsp;Retornar para a Loja&nbsp; </a>
                             </div>
                         </div>
                         <div class="col-md-12 text-danger">

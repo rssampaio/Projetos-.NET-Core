@@ -19,7 +19,7 @@
                 @Html.DisplayName("Data do Pedido")
             </th>
             <th>
-                @Html.DisplayName("Entrga")
+                @Html.DisplayName("Entregue Em")
             </th>
             <th></th>
         </tr>
@@ -34,11 +34,11 @@
                 @Html.DisplayFor(modelItem => item.DataHoraPedido)
             </td>
             <td>
-                @Html.DisplayNameFor(model => item.Cliente.Nome)
+                @Html.DisplayNameFor(model => item.DtaPedidoEntregueEm)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.PedidoId">Editar</a>
-                <a asp-action="Delete" asp-route-id="@item.PedidoId">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.PedidoId">Apagar</a>
                 <a asp-action="PedidoProduto" asp-route-id="@item.PedidoId">Ver Produtos</a>
             </td>
         </tr>

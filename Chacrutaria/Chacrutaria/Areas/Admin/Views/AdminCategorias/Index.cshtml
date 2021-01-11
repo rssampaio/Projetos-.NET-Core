@@ -1,22 +1,22 @@
 ﻿@model IEnumerable<Chacrutaria.Models.Categoria>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Categorias";
 }
 
-<h1>Index</h1>
+<h1>Categorias</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p style="font-size: 16px">
+    <a asp-action="Create">Novo</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NomeCategoria)
+                @Html.DisplayName("Categoria")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descricao)
+                @Html.DisplayName("Descrição")
             </th>
             <th></th>
         </tr>
@@ -31,9 +31,9 @@
                 @Html.DisplayFor(modelItem => item.Descricao)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CategoriaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CategoriaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CategoriaId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.CategoriaId">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.CategoriaId">Consultar</a> |
+                <a asp-action="Delete" asp-route-id="@item.CategoriaId">Apagar</a>
             </td>
         </tr>
 }

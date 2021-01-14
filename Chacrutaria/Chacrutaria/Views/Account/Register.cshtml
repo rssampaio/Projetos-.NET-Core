@@ -2,11 +2,11 @@
 
 <table>
     <tr>
-        <td><img src="~/images/registro1.jpg" alt="Registrar Usuário" class="center-block" /></td>
+        @*<td><img src="~/images/registro1.jpg" alt="Registrar Usuário" class="center-block" /></td>*@
         <td>
             <div class="row loginForm">
-                <div class="col-md-12">
-                    <h4>Registrar Usuário e Senha de Compra</h4>
+                <div class="col-md-12" style="position:relative">
+                    <h4 class="text-center">Registrar Usuário</h4>
                     <form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
                         <hr />
                         <div class="form-group">
@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group pull-right formPullRightButton">
                             <div class="col-md-2">
-                                <input type="submit" class="btn" style="Background: black; color:gold; width: 400px;" value="Registrar" />
+                                <input type="submit" class="btn" style="Background: black; color:gold; width: 300px;" value="Registrar" />
                             </div>
                             <div class="col-md-">
                                 <a class="nav-link" asp-controller="Home" asp-action="Loja" style="color:blue">&nbsp;Retornar para a Loja&nbsp; </a>

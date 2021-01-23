@@ -1,5 +1,8 @@
 ﻿@model Cliente
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
 <h3 class="text-center">Informações do Pedido</h3>
 
 <br />
@@ -55,7 +58,7 @@
             </div>
             <div class="col-md-2 mb-3">
                 <label asp-for="UF"></label>
-                <input asp-for="UF" class="form-control" />
+                <input asp-for="UF" class="form-control" style="text-transform:uppercase"/>
                 <span asp-validation-for="UF" class="text-danger"></span>
             </div>
         </div>
@@ -74,12 +77,18 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label asp-for="Fone1"></label>
-                <input asp-for="Fone1" class="form-control" />
+                <input asp-for="Fone1" class="form-control" id="fone1" name="fone1" placeholder="(99) 99999999" />
+                <script type="text/javascript">
+                    $("#fone1").mask("(00) 0000-0000");
+                </script>
                 <span asp-validation-for="Fone1" class="text-danger"></span>
             </div>
             <div class="col-md-4 mb-3">
                 <label asp-for="Fone2"></label>
-                <input asp-for="Fone2" class="form-control" />
+                <input asp-for="Fone2" class="form-control" id="fone2" placeholder="(99) 999999999" />
+                <script type="text/javascript">
+                    $("#fone2").mask("(00) 00000-0000");
+                </script>
                 <span asp-validation-for="Fone2" class="text-danger"></span>
             </div>
         </div>

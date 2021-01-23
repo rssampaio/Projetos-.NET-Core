@@ -45,10 +45,18 @@ namespace Chacrutaria.Models
         public string Email { get; set; }
 
         [Display(Name = "Telefone Fixo")]
-        public int Fone1 { get; set; }
+        [StringLength(14)]
+        [RegularExpression(@"^(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})$",
+            ErrorMessage = "O telefone não possui um formato correto")]
+        [Phone]
+        public string Fone1 { get; set; }
 
         [Display(Name = "Celular")]
-        public int Fone2 { get; set; }
+        [StringLength(15)]
+        [RegularExpression(@"^(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})$",
+            ErrorMessage = "O telefone não possui um formato correto")]
+        [Phone]
+        public string Fone2 { get; set; }
 
     }
 }
